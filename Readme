@@ -1,1 +1,39 @@
-When the article has been decided to be sent for review, the code will be uploaded
+This repository contains the source code and analytical scripts required to reproduce the data processing, 
+statistical analysis, and validation procedures presented in the manuscript. The repository is organized into 
+three main directories: Data preprocessing, Data analysis, and Validation.
+
+1. Data Preprocessing (/Data preprocessing)
+This directory contains Python scripts used to clean and standardize the raw spatial datasets before core analyses.
+
+CDR_to_Flow_Dakar.py: Converts raw Call Detail Records (CDRs) into origin-destination flow data.
+Note: This script is exclusively applied to the Dakar dataset. Raw datasets for the other case cities were already obtained in a flow format.
+
+Irregular_to_Gridded_Transformation.py: Transforms spatial data from irregular administrative or census units into a standardized gridded format 
+to ensure consistent spatial resolution.
+Note: This script is specifically applied to non-Chinese case cities. For details, please refer to the Materials and Methods section in the main text.
+
+2. Data Analysis (/Data analysis)
+This directory contains the core analytical scripts used to measure and model the spatial scaling behavior. It is divided into two sub-modules:
+
+2.1 Scaling Measurement (/Scaling measurement)
+Contains scripts to aggregate and quantify the spatial scaling characteristics of mobility flows and population distributions across varying spatial scales. 
+These measurements serve as the empirical foundation for the subsequent parameterization.
+
+2.2 Scaling Analysis (/Scaling analysis)
+Contains MATLAB scripts that perform statistical estimations based on the measured scaling features:
+
+Flow_scaling_regimes_identification.m: Identifies distinct flow scaling regimes and estimates the corresponding scaling parameters.
+
+Population_scaling_analysis.m: Calculates the scaling parameters for spatial population distributions.
+
+Flow_population_allometric_scaling_analysis.m: Computes the parameters governing the allometric scaling relationship between mobility flows and population.
+
+3. Validation (/Validation)
+This directory contains rigorous statistical tests and simulations designed to verify the robustness of the empirical findings and theoretical models.
+
+Permutation test for trade-offs/: Conducts permutation tests to validate the observed systemic trade-offs against potential parameterization artifacts.
+For theoretical background and detailed mathematical proofs, please refer to Supplementary Text S3.
+
+Model_based_counterfactual_simulation/: Contains scripts to conduct counterfactual simulations that validate the efficacy of the analytical derivative and 
+demonstrate the superior efficiency of the targeted spatial intervention strategy over global or random approaches.
+For comprehensive simulation setups and derivations, please refer to Supplementary Texts S5 to S8.
